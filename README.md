@@ -25,3 +25,6 @@ html存放的html文件
 
 //  "background":{"scripts":["background.js"]},
 // 会一直常驻的后台JS或后台页面
+
+
+# 我所有的插件都会写在这个仓库里面，然后通过分支来区分不同的插件
