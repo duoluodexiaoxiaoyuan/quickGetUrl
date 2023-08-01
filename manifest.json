@@ -1,24 +1,24 @@
 {
-  "name": "QuickGetUrl",
+  "name": "My WebSocket Plugin",
   "manifest_version": 2,
   "version": "1.0.0",
-  "author": "xiaolaji",
-  "devtools_page": "devtools.html",
-  "description": "解决掘金和简书的直链跳转,因为经常会访问这两个网站",
+  "autuor": "xiaolaji",
+  "description": "My WebSocket Plugin",
   "icons": {
-    "16": "img/icon16.png",
-    "48": "img/icon48.png",
-    "128": "img/icon128.png"
+    "200": "img/websocket.png"
   },
-  "content_scripts": [
-    {
-        "matches": [
-            "https://link.juejin.cn/?target=*",
-            "https://www.jianshu.com/go-wild?*"
-        ],
-        "js": [
-            "js/content-script.js"
-        ]
-    }
-  ]
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "webSocket",
+    "<all_urls>",
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
 }

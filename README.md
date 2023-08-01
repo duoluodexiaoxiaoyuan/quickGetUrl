@@ -1,30 +1,15 @@
-# quickGetUrl
+# webSocketPlugin
 
-一个直链跳转的谷歌插件
+和启用的node的webSocket建立连接
 
-manifest.json是整个插件的功能及文件配置清单，非常重要。
+# var socket = chrome.extension.getBackgroundPage().socket; 什么意思
 
-static目录是放置整个插件的静态资源文件的，包括css、js、图片等等资源
+这段代码是用于在popup.js文件中获取background.js文件中创建的WebSocket对象的方法。
 
-template目录是放置整个插件的功能页面模板的。
+在Chrome插件中，background.js文件是一个后台脚本，用于处理插件的核心逻辑，而popup.js文件是在插件弹出窗口中运行的脚本，用于显示用户界面和响应用户操作。
 
-Page Actions 与 Browser Actions 的区别就是 Page Actions 并不是在每个页面上都是有用的，它必须在特定的页面中插件功能才能使用。
-这两种用户面界面分别对应manifest.json中的browser_action和page_action字段。
+在这种情况下，由于WebSocket对象是在background.js中创建的，因此需要使用chrome.extension.getBackgroundPage()方法来获取background.js文件的全局窗口对象，然后通过该对象访问WebSocket对象。具体来说，chrome.extension.getBackgroundPage()方法返回一个代表background.js窗口对象的Window对象，您可以使用该对象访问background.js文件中定义的全局变量和函数。
 
-manifest.json 是整个插件的功能和文件配置清单，非常重要
-
-images 存放的为插件的图标文件
-
-_locales 存放的为插件的国际化语言脚本
-
-scripts 存放的为js 文件
-
-styles存放的为样式文件
-
-html存放的html文件
-
-//  "background":{"scripts":["background.js"]},
-// 会一直常驻的后台JS或后台页面
+因此，var socket = chrome.extension.getBackgroundPage().socket; 这行代码的作用是获取background.js文件中创建的WebSocket对象，并将其保存在socket变量中，以便在popup.js文件中使用该对象来发送和接收消息。
 
 
-# 我所有的插件都会写在这个仓库里面，然后通过分支来区分不同的插件
