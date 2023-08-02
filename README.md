@@ -1,6 +1,6 @@
 # displayNumberForExtensions
 
-这个分支实现了点击插件图标打开新的标签页,这里用的是3的版本
+这个分支实现了给插件图标右下角加数字的效果,实现了webSocket效果，实现了如何通过网页唤起某款软件,这里用的是3的版本
 
 # manifest.json
 
@@ -11,21 +11,3 @@
 "contextMenus": 该权限允许您向Chrome浏览器上下文菜单(右键菜单)中添加自定义菜单项。这可以用于为您的插件提供更多的交互方式，例如在右键菜单中添加"使用我的插件"选项。
 
 [Why is chrome.browserAction.onClicked undefined?](https://www.gangofcoders.net/solution/why-is-chrome-browseraction-onclicked-undefined/)
-
-# 下面的api方法是用popup.html里面的
-
-```javascript
-chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    var url = tabs[0].url;
-    fetch('your-api-url-here')
-      .then(response => response.json())
-      .then(data => {
-        var statusDiv = document.getElementById('status');
-        if (data.success) {
-          statusDiv.innerText = '✅';
-        } else {
-          statusDiv.innerText = '❎';
-        }
-      });
-  });
-```
