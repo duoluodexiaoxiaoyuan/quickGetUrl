@@ -1,15 +1,27 @@
 # webSocketPlugin
 
-和启用的node的webSocket建立连接
+这个分支实现了点击插件弹出popup.html然后点击按钮在页面居中区域弹出一个alert弹框
 
-# var socket = chrome.extension.getBackgroundPage().socket; 什么意思
+# manifest.json
 
-这段代码是用于在popup.js文件中获取background.js文件中创建的WebSocket对象的方法。
+"activeTab": 该权限允许您访问当前活动的选项卡信息，例如URL,标题和图标等。这对于需要在当前选项卡中执行某些操作的插件非常有用。
 
-在Chrome插件中，background.js文件是一个后台脚本，用于处理插件的核心逻辑，而popup.js文件是在插件弹出窗口中运行的脚本，用于显示用户界面和响应用户操作。
+"scripting": 该权限允许您在网页上执行自定义JavaScript代码。这可以用于修改网页内容，添加新元素或与第三方API交互
 
-在这种情况下，由于WebSocket对象是在background.js中创建的，因此需要使用chrome.extension.getBackgroundPage()方法来获取background.js文件的全局窗口对象，然后通过该对象访问WebSocket对象。具体来说，chrome.extension.getBackgroundPage()方法返回一个代表background.js窗口对象的Window对象，您可以使用该对象访问background.js文件中定义的全局变量和函数。
+"contextMenus": 该权限允许您向Chrome浏览器上下文菜单(右键菜单)中添加自定义菜单项。这可以用于为您的插件提供更多的交互方式，例如在右键菜单中添加"使用我的插件"选项。
 
-因此，var socket = chrome.extension.getBackgroundPage().socket; 这行代码的作用是获取background.js文件中创建的WebSocket对象，并将其保存在socket变量中，以便在popup.js文件中使用该对象来发送和接收消息。
+
+```javascript
+document.addEventListener("DOMContentLoaded", function() {
+  var myButton = document.getElementById("myButton");
+  myButton.addEventListener("click", function() {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.executeScript(
+        tabs[0].id,
+        {code: 'alert("Hello, world!");'});
+    });
+  });
+});
+```
 
 

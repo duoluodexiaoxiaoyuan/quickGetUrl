@@ -2,12 +2,15 @@
   "name": "My WebSocket Plugin",
   "manifest_version": 2,
   "version": "1.0.0",
-  "autuor": "xiaolaji",
+  "author": "xiaolaji",
   "description": "My WebSocket Plugin",
   "icons": {
     "200": "img/websocket.png"
   },
   "permissions": [
+    "activeTab",
+    "scripting",
+    "contextMenus",
     "webRequest",
     "webRequestBlocking",
     "webNavigation",

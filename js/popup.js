@@ -1,18 +1,14 @@
-var socket = chrome.extension.getBackgroundPage().socket;
-var messages = document.getElementById("messages");
-var messageInput = document.getElementById("message");
-var sendButton = document.getElementById("send");
+document.addEventListener("DOMContentLoaded", function() {
+  var myButton = document.getElementById("myButton");
+  myButton.addEventListener("click", function() {
+    // 这里直接写一个alert弹框是直接在插件附近会出现一个弹框
+    // alert('hello world')
 
-sendButton.onclick = function(event) {
-  event.preventDefault();
-  var message = messageInput.value;
-  socket.send(message);
-  messageInput.value = "";
-};
-
-socket.onmessage = function(event) {
-  var message = event.data;
-  var messageElement = document.createElement("div");
-  messageElement.innerHTML = message;
-  messages.appendChild(messageElement);
-};
+    // 这里会在整个页面居中的地方出现弹框
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.executeScript(
+        tabs[0].id,
+        {code: 'alert("Hello, world!");'});
+    });
+  });
+});
