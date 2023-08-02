@@ -1,27 +1,19 @@
 {
-  "name": "My WebSocket Plugin",
-  "manifest_version": 2,
-  "version": "1.0.0",
+  "manifest_version": 3,
+  "name": "webSocketPlugin",
+  "version": "1.0",
   "author": "xiaolaji",
-  "description": "My WebSocket Plugin",
+  "description": "click icon create new tab",
   "icons": {
     "200": "img/websocket.png"
   },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {},
   "permissions": [
     "activeTab",
     "scripting",
-    "contextMenus",
-    "webRequest",
-    "webRequestBlocking",
-    "webNavigation",
-    "webSocket",
-    "<all_urls>",
-    "tabs"
-  ],
-  "background": {
-    "scripts": ["background.js"]
-  },
-  "browser_action": {
-    "default_popup": "popup.html"
-  }
+    "contextMenus"
+  ]
 }

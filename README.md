@@ -1,6 +1,6 @@
 # webSocketPlugin
 
-这个分支实现了点击插件弹出popup.html然后点击按钮在页面居中区域弹出一个alert弹框
+这个分支实现了点击插件图标打开新的标签页,这里用的是3的版本
 
 # manifest.json
 
@@ -10,18 +10,5 @@
 
 "contextMenus": 该权限允许您向Chrome浏览器上下文菜单(右键菜单)中添加自定义菜单项。这可以用于为您的插件提供更多的交互方式，例如在右键菜单中添加"使用我的插件"选项。
 
-
-```javascript
-document.addEventListener("DOMContentLoaded", function() {
-  var myButton = document.getElementById("myButton");
-  myButton.addEventListener("click", function() {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.executeScript(
-        tabs[0].id,
-        {code: 'alert("Hello, world!");'});
-    });
-  });
-});
-```
-
+[Why is chrome.browserAction.onClicked undefined?](https://www.gangofcoders.net/solution/why-is-chrome-browseraction-onclicked-undefined/)
 
